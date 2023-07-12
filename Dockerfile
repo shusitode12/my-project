@@ -1,8 +1,7 @@
-FROM openjdk:8-jre-alpine
+FROM nginx:latest
 
-EXPOSE 8080
+COPY . /usr/share/nginx/html
 
-COPY ./build/libs/my-app-1.0-SNAPSHOT.jar /usr/app/
-WORKDIR /usr/app
+EXPOSE 80
 
-ENTRYPOINT ["java", "-jar", "my-app-1.0-SNAPSHOT.jar"]
+CMD ["nginx", "-g", "daemon off;"]
